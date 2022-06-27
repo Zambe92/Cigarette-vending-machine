@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        
+        var paglie=document.getElementById("paglie");
+
+        let sigarette = ["Marlboro", 6.20, "Chesterfield", 6.05, "Merit", 6.30, "Camel", 6.10, "Winston", 6.10, "Nazionali", 6.10, "Morris", 6.00, "MS", 5.50]
+        let posizioni = []; 
+        function picking(marca_sigarette) {
+            for (i = 0; i < sigarette.length; i++) {
+                if (marca_sigarette === sigarette[i]) {
+                    posizioni.push(i);
+               
+                    let li = document.createElement("li");
+                    li.textContent = marca_sigarette;
+                    document.getElementById("paglie").appendChild(li);
+                    
+
+
+                    //document.getElementById("screen").value += marca_sigarette+" ";
+                   // if(marca_sigaretta==marca_sigaretta)[document.getElementById("screen").value += marca_sigarette]
+                }
+                 
+            }
+            console.log(posizioni);  
+            let tot=0;
+            for (i = 0; i < posizioni.length; i++) {
+                console.log(sigarette[posizioni[i]]);
+                console.log(sigarette[posizioni[i] + 1]);
+                tot = tot + sigarette[posizioni[i] + 1];
+            }
+            document.getElementById("screen").value=parseFloat(tot).toFixed(2) +" euro";
+
+        }
+        function conto() {
+            let tot = 0;
+            document.getElementById("screen").value ="";
+
+            for (i = 0; i < posizioni.length; i++) {
+                console.log(sigarette[posizioni[i]]);
+                console.log(sigarette[posizioni[i] + 1]);
+                tot = tot + sigarette[posizioni[i] + 1];
+            }
+            document.getElementById("screen").value=parseFloat(tot).toFixed(2) +" euro";
+            //Math.round(valore*100) / 100;
+            //.toFixed(2)
+
+        }
+
+        function remove() {
+            posizioni.pop(posizioni[i]);
+            console.log(posizioni)
+            let paglie=document.getElementById("paglie")
+            paglie.removeChild(paglie.lastElementChild);
+        }
+
+
+        
+
+    </script>
+</head>
+
+<body>
+    <input type="button" value="Marlboro" onclick="picking('Marlboro')">
+    <input type="button" value="Chesterfield" onclick="picking('Chesterfield')">
+    <input type="button" value="Merit" onclick="picking('Merit')">
+    <input type="button" value="Camel" onclick="picking('Camel')">
+    <input type="button" value="Winston" onclick="picking('Winston')">
+    <input type="button" value="Nazionali" onclick="picking('Nazionali')">
+    <input type="button" value="Morris" onclick="picking('Morris')">
+    <input type="button" value="MS" onclick="picking('MS')">
+    <br>
+    <ul id="paglie"></ul>
+    <input type="button" onclick=conto() value="confirm">
+    <input type="button" onclick=remove() value="cancella">
+    <input type="text" name="" id="screen">
+    
+</body>
+
+</html>
